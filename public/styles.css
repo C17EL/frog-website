@@ -1,0 +1,633 @@
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column; 
+    font-family: 'Roboto', sans-serif;
+    background-color: #ecf0f1;
+    position: relative;
+    background-color: #e9f5e1; /* Light green */
+    color: #333;
+}
+
+p {
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+
+.sidebar {
+    width: 250px;
+    background-color: #386e3d;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    position: fixed; /* Keeps the sidebar in a fixed position */
+    left: -250px; /* Initially hidden */
+    top: 0;
+    height: 100%;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    transition: left 0.3s ease-in-out;
+    z-index: 1000; /* Ensure it overlaps the hr line */
+}
+
+.sidebar.show {
+    left: 0;
+}
+
+.title-header {
+    text-align: center;
+    color: white;
+    margin-bottom: 40px;
+    font-size: 24px;
+    letter-spacing: 1px;
+    transition: font-size 0.3s ease;
+}
+
+.sidebar:hover .title-header {
+    font-size: 28px;
+}
+
+.Tags ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.Tags ul li {
+    margin-bottom: 20px;
+}
+
+.Tags ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 15px 20px;
+    display: block;
+    font-size: 18px;
+    transition: background-color 0.3s ease, padding-left 0.3s ease;
+    border-radius: 30px;
+}
+
+.Tags ul li a:hover {
+    background-color:#6fb376;
+    padding-left: 30px;
+}
+
+.Tags ul li a:before {
+    content: "🐸";
+    display: inline-block;
+    margin-right: 15px;
+    transition: transform 0.3s ease;
+}
+
+.Tags ul li a:hover:before {
+    transform: rotate(360deg);
+}
+
+.main-content {
+    margin-left: 50px;
+    padding: 20px;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.sidebar.show + .main-content {
+    margin-left: 250px;
+}
+
+.toggle-btn {
+    position: fixed;
+    top: 50%;
+    left: -50px;
+    background-color: #386e3d;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1001;
+    transform: translateY(-50%);
+    border-radius: 0 5px 5px 0;
+    transition: left 0.3s ease;
+}
+
+.toggle-btn span {
+    color: #fff;
+    font-size: 20px;
+}
+
+.sidebar.show ~ .toggle-btn {
+    left: 250px;
+}
+
+.sidebar:not(.show) ~ .toggle-btn {
+    left: 0;
+}
+
+.frog-footer {
+    background-color: #386e3d;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-content p {
+    margin: 10px 0;
+}
+
+.footer-tagline {
+    font-style: italic;
+    font-size: 14px;
+}
+
+.social-links {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.social-links li {
+    margin: 0 10px;
+}
+
+.social-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.social-links li a:hover {
+    color: #5eb17a;
+}
+
+
+.title-container {
+    
+    height: 20vh;
+    padding: 50px;
+    text-align: center;
+    margin-top: 40px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); 
+    border: 2px solid #4caf50; /* Leafy green border */
+    padding: 30px;
+    border-radius: 10px;
+    background-image: url('/public/img/Screenshot\ 2024-10-17\ 152642.png'); /* Add a subtle background image */
+    background-size: cover;   /* Ensure the image covers the entire area */
+    background-position: center;
+    background-blend-mode: multiply;
+    background-color: rgba(224, 247, 218, 0.9);
+}
+
+.bullfrog-title {
+    margin-bottom: 20px; /* Adjust for spacing below title */
+    font-size: 48px;
+    color: #4a7033;
+    text-shadow: 2px 2px #1e441a, 4px 4px #000;
+    font-weight: bold;
+    letter-spacing: 4px;
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+}
+
+.bullfrog-eye {
+    position: absolute;
+    top: -40px;
+    width: 45px;
+    height: 45px;
+    background-color: #4a7033;
+    border-radius: 50%;
+    border: 4px solid #000;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.bullfrog-eye.left {
+    left: -40px;
+}
+
+.bullfrog-eye.right {
+    right: -40px;
+}
+
+.bullfrog-eye .pupil {
+    position: absolute;
+    top: auto;
+    bottom: 0; 
+    left: 2.5px; 
+    width: 35px;
+    height: 35px;
+    background-color: #000;
+    border-radius: 50%;
+    box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.bullfrog-eye .pupil::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 5px;
+    width: 9px;
+    height: 9px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+    .bullfrog-title {
+        font-size: 36px;
+        letter-spacing: 2px;
+    }
+
+    .bullfrog-eye {
+        width: 30px;
+        height: 30px;
+    }
+
+    .bullfrog-eye .pupil {
+        width: 30px;
+        height: 30px;
+        left: 0; 
+        bottom: 0; 
+    }
+
+    .bullfrog-eye .pupil::before {
+        width: 7px;
+        height: 7px;
+        top: 8px;
+        left: 8px;
+    }
+}
+
+
+
+
+
+/* Body intro section styles */
+
+hr.styled-hr {
+    border: none;
+    height: 2px;
+    background-color: #333;
+    margin: 40px 0;
+}
+
+
+
+.intro {
+    background-color: #e6f4ea; /* Softer, more neutral green */
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    font-family: 'Helvetica', sans-serif;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+.intro h2 {
+    font-size: 38px;
+    color: #276a39; /* Refined darker green */
+    margin-bottom: 15px;
+    font-weight: 700;
+    letter-spacing: 1.5px; /* Slight spacing for a modern feel */
+}
+
+
+.intro h3 {
+    font-size: 26px;
+    color: #4e9c4b; /* Softer contrast */
+    font-style: italic;
+    margin-bottom: 0; /* Tighter spacing */
+}
+
+
+.intro h3::after {
+    content: " 🌱"; /* Adding a plant emoji after the subtitle */
+}
+
+.site-container {
+    display: flex;
+    justify-content: space-between; /* Space between the two sections */
+    align-items: flex-start; /* Align items at the top */
+    gap: 30px; /* Space between the elements */
+    margin: 30px auto; /* Center the container */
+    max-width: 1200px; /* Control the max width of the content */
+    padding: 20px;
+}
+
+.site-intro {
+    flex: 1 1 60%; /* Take up 60% of the available width */
+    background-color: #f0f9f4;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.08);
+    text-align: justify;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 18px;
+    color: #2f5e2f;
+}
+
+/* Add frog emojis in the content */
+.site-intro::before {
+    content: "🐸 "; /* Reduce to a single emoji for a cleaner look */
+    font-size: 22px;
+}
+.site-intro {
+    background-color: #e0f7da; /* Light green background */
+    padding: 20px;
+    border-radius: 5px; /* Slightly rounded corners */
+    font-family: Arial, sans-serif; /* Standard web font */
+    font-size: 18px; /* Increased font size */
+    font-weight: bold; /* Bold text */
+    line-height: 1.8; /* More space between lines */
+    color: #2d572c; /* Dark green text color */
+    margin: 20px auto; /* Center the div */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    max-width: 900px; /* Limit the width of the text block */
+    text-align: justify; /* Makes the text fit nicely within the div */
+}
+
+
+/* Add frog emojis in the content */
+.site-intro::after {
+    content: " 🌿"; /* Simplify to a single leaf emoji */
+    font-size: 22px;
+}
+
+
+.fun-fact, .site-intro {
+    padding: 40px;
+    margin: 40px auto;
+}
+
+.intro-container {
+display:inline-flex;
+}
+
+/*gallery*/
+
+.middle-container {
+    display: flex;
+    align-items: center; /* Center children horizontally */
+    margin: 20px auto; 
+    position: relative;
+    overflow: hidden; 
+    width: 100%;
+}
+
+.slider-container {
+    width: 100%;
+    max-width: 1000px; /* Maximum width for the slider */
+    position: relative; /* Necessary for positioning slider */
+}
+
+
+
+.slider {
+    height: 500px;
+    position: relative; /* Positioning for absolute children */
+    width:100%; /* Full width of the container */
+    max-width: 1000px; /* Limit the maximum width */
+    margin:auto; /* Center the slider */
+    overflow: hidden; /* Hide overflow */
+    border-radius: 10px; /* Rounded corners for the slider */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+  
+.slider img {
+    width: 100%; /* Make images fill the slider */
+    height: 100%; /* Maintain aspect ratio */
+    object-fit: cover; 
+    position: absolute; /* Position images on top of each other */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+    opacity: 0; /* Hide all images initially */
+    transition: opacity 1s ease-in-out; /* Smooth transition for opacity */
+}
+  
+.slider img:first-child {
+    opacity: 1; /* Show the first image initially */
+}
+  
+ 
+.nav-btn {
+    text-align: center; /* Center the dots */
+    margin-top: 10px; /* Space above dots */
+    position: relative; /* Ensure positioning */
+
+}
+  .dot {
+    display: inline-block; /* Display dots in a row */
+    width: 12px; /* Dot size */
+    height: 12px; /* Dot size */
+    margin: 0 5px; /* Spacing between dots */
+    background-color: #ccc; /* Default color for inactive dots */
+    border-radius: 50%; /* Make dots circular */
+    cursor: pointer; /* Change cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for color change */
+}
+  
+  .active,
+  .dot:hover {
+    background-color: #717171;
+  }
+
+
+
+
+
+
+
+
+
+
+.fun-fact {
+    padding: 40px;
+    border-radius: 5px; /* Slightly rounded corners */
+    width: 900; /* Limit the width of the section */
+    margin: 50px auto; /* Center the section */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+
+}
+
+.fun-fact h2 {
+    font-family: Arial, sans-serif; /* Standard web font */
+    font-size: 30px; /* Larger font size for the heading */
+    color: #2d572c; /* Dark green text color */
+    font-weight: bold;
+    text-align: center; /* Center the heading */
+}
+
+.fun-fact ul {
+    list-style-type: disc; /* Use default disc bullet points */
+    padding-left: 20px; /* Add left padding to indent the list */
+}
+
+.fun-fact li {
+    font-family: 'Georgia', serif; /* Use a different font for a more elegant look */
+    font-size: 18px; /* Keep the font size for readability */
+    line-height: 1.8; /* Increase line spacing for better readability */
+    color: #2d572c; /* Dark green text color */
+    margin: 15px 0; /* Add more space between each fact */
+    padding: 10px; /* Add padding inside each list item */
+    background-color: #81ad81; /* Light background for each list item */
+    border-left: 5px solid #2d572c; /* Add a dark green left border */
+    border-radius: 5px; /* Slightly round the corners of each list item */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Add a soft shadow for depth */
+}
+
+.organ-hotspot {
+    background-color: transparent; /* Keeps the divs invisible */
+    cursor: pointer; 
+    border: 1px solid red;
+}
+.organ-hotspot:hover {
+    border: 1px solid black; /* Visible indication on hover */
+}
+
+
+
+#organ-info {
+
+    display: none; /* Start hidden */
+    background-color: rgba(0, 0, 0, 0.7); /* Visible background */
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    z-index: 1000; /* Ensure it's on top of other elements */
+    width: 250px; /* Adjust to ensure it's not too wide */
+}
+
+
+#fun-fact {
+    display: flex;
+    margin-top: -500px; /* Change this to your desired top position */
+    margin-left: 600px; /* Change this to your desired left position */
+    margin-bottom:60px;
+    display: none; /* Initially hidden */
+    border: 3px solid transparent; /* Set initial border to transparent */
+    border-radius: 15px; /* Rounded corners */
+    padding: 15px;
+    z-index: 1000; /* Ensure it's above other content */
+    height: 400px;
+    width: 300px;
+    font-size: 40px;
+    background-color: #c7c9c6;
+    color: white;
+    position: relative; /* For pseudo-elements */
+    overflow: hidden; /* Ensure content stays within rounded corners */
+}
+
+/* Add a gradient border effect */
+#fun-fact::before {
+    content: "";
+    position: absolute;
+    top: -3px; /* Match border thickness */
+    left: -3px; /* Match border thickness */
+    right: -3px; /* Match border thickness */
+    bottom: -3px; /* Match border thickness */
+    background: linear-gradient(45deg, #bec5bf, #6db451); /* Gradient colors */
+    z-index: -1; /* Send behind the content */
+    border-radius: 15px; /* Match the rounded corners */
+}
+
+
+
+
+
+.anat-body {
+    background-color: rgb(223, 250, 212);
+    height:100%;
+}
+
+
+
+
+.frog-anatomy-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 90px; /* Add some padding around the container */
+    position: relative; /* Add relative positioning here */
+    border: 1px solid #ddd; /* Optional: add a border for visual separation */
+   
+}
+
+
+
+/* Positioning the fun-fact box */
+
+
+.image-container {
+    display: flex;
+ margin-right:400px;
+ margin-top: 150px;
+}
+
+
+
+.ttl {
+    text-align: center;   
+    margin-top: -50px;            
+    font-size: 3rem;                  /* Increased font size for more impact */
+    color: #fff;                     /* Changed text color for better contrast */
+    font-family: 'Lato', sans-serif;   
+    border: 2px dotted #4c9a2a;      
+    padding: 15px;                  /* Increased padding for a bolder look */
+    border-radius: 15px;              /* Increased border radius for softer corners */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+    background-color: #77c458;                          
+    position: relative;                        
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added transition for effects */
+}
+
+
+.frog-image {
+    width: 550px;
+    height: 550px; /* Maintain the aspect ratio */
+    max-height: 90vh; /* Make sure it doesn't exceed 90% of the viewport height */
+    object-fit: contain; 
+    margin-bottom: 60px;
+    pointer-events: auto;
+    border: 10px solid transparent; /* Set initial border to transparent */
+    border-radius: 20px; /* Rounded corners */
+    position: relative; /* For pseudo-elements */
+    overflow: hidden; /* Ensure content stays within rounded corners */
+}
+
+/* Add a gradient border effect */
+
+
+/* Optional: Adding a box shadow for depth */
+.frog-image {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Add a shadow for depth */
+}
+
+
+
+.ttl h2, h3 {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

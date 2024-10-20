@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/public/styles.css" />
+</head>
+<body class="body">
+    <%- include("partials/header.ejs") %>
+    <div class="title-container">
+        <div class="bullfrog-title">
+            FrogSite
+            <div class="bullfrog-eye left">
+                <div class="pupil"></div>
+            </div>
+            <div class="bullfrog-eye right">
+                <div class="pupil"></div>
+            </div>
+        </div>
+    </div>
+<hr class="styled-hr">
+<div class="intro">
+    <h2>Welcome to the Official FrogSite</h2>
+    <h3>Learn, explore, and conserve!</h3>
+</div>
+
+<div class="site-intro">
+    <p>Thanks for joining us on this frog-tastic journey! Frogs are a crucial part of the ecosystem, acting as a pest control for mosquitos and insects, and they are food for many other animals.
+        Not only that, but their population alone helps us indicate environmental health becvause they are so sensitive to pollution.
+        Here, you will learn more about frogs, their importance, and their cuteness. Unleash your frog knowledge on our quiz, and play our frog featured game if you dare!
+    </p>
+
+</div>
+
+<div class="middle-container">
+<div class="fun-fact">
+    <h2>Fun Frog Facts!</h2>
+    <ul>
+        <li> 🍀   Frogs can breathe through their skin as well as their lungs!</li>
+        <li>🍀   There are over 7,000 species of frogs around the world!</li>
+        <li>🍀   Some frogs can jump over 20 times their body length!</li>
+        <li> 🍀   Frogs use their eyes to help swallow food by blinking!</li>
+        <li> 🍀   Some species of frogs can change color depending on their surroundings!</li>
+    </ul>
+</div>
+<div class="slider-container">
+<div class="slider">
+    <img id="img-1" src="/public/img/Screenshot 2024-09-28 103759.png" alt="Image 1"/>
+    <img id="img-2" src="/public/img/Screenshot 2024-09-28 103932.png" alt="Image 2"/>
+    <img id="img-3" src="/public/img/Screenshot 2024-09-28 104001.png" alt="Image 3"/>
+    <img id="img-4" src="/public/img/Screenshot 2024-09-28 104137.png" alt="Image 4"/>
+    <img id="img-5" src="/public/img/Screenshot 2024-09-28 104150.png" alt="Image 5"/>
+</div>
+<div class="nav-btn">
+    <span class="dot active" onclick="changeSlide(0)"></span>
+    <span class="dot " onclick="changeSlide(1)"></span>
+    <span class="dot " onclick="changeSlide(2)"></span>
+    <span class="dot " onclick="changeSlide(3)"></span>
+    <span class="dot " onclick="changeSlide(4)"></span>
+</div>
+</div>
+</div>
+
+
+
+
+
+<hr class="styled-hr">
+
+
+
+
+</body>
+    <script src="/public/script.js" charset="utf-8" defer></script>
+    <%- include("partials/footer.ejs") %>
+
+</html>

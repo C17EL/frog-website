@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anatomy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/public/styles.css" />
+</head>
+<%- include("partials/header.ejs") %>
+<body class="anat-body">
+
+    <div class="frog-anatomy-container">
+        <div class="ttl">
+            <h2>A Frog's Anatomy</h2>
+            <h3>Click over an organ to see what it does!</h3>
+        </div>
+        <div class="image-container">
+        <img usemap ="#frogmap" class="frog-image" src="/public/img/Screenshot 2024-10-18 095617.png" alt="Frog Anatomy" usemap="#frogmap">
+    </div>
+    <map  name="frogmap">
+    <area class="organ" shape="rect" coords="259,210,286,251" alt="Heart" href="#" data-organ="heart">
+    <area class="organ" shape="rect" coords="228,244,259,273" alt="Liver" href="#" data-organ="liver">
+    <area class="organ" shape="rect" coords="264,130,285,166" alt="Brain" href="#" data-organ="brain">
+    <area class="organ" shape="rect" coords="213,215,238,243" alt="Lungs" href="#" data-organ="lungs">
+    <area class="organ" shape="rect" coords="321,336,348,374" alt="Stomach" href="#" data-organ="stomach">
+    <area class="organ" shape="rect" coords="230,420,285,468" alt="Large-Intestine" href="#" data-organ="largeIntestines">
+    <area class="organ" shape="rect" coords="229,288,248,308" alt="Gall-Bladder" href="#" data-organ="gallBladder">
+    <area class="organ" shape="rect" coords="248,327,277,369" alt="Small-Intestine" href="#" data-organ="smallIntestines">
+    </map> 
+  
+   
+    <div id="fun-fact" >\
+
+        <!-- Fun fact will be displayed here -->
+    </div>
+
+    </div>
+        <!-- Tooltip for displaying organ information -->
+        <div id="organ-info" style="position: absolute; display: none; background-color: rgba(0, 0, 0, 0.7); color: white; padding: 5px; border-radius: 4px;">
+            </div>
+  
+
+    
+</body>
+<script src="/public/script.js" charset="utf-8" defer></script>
+    <%- include("partials/footer.ejs") %>
+
+</html>
